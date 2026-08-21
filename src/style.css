@@ -1,0 +1,204 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f4f7f6;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  background: #ffffff;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  position: relative;
+}
+
+/* Header & Typography */
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  color: #a00010; /* Merah gelap profesional */
+  margin-bottom: 8px;
+  font-size: 26px;
+}
+
+header p {
+  color: #555;
+  font-size: 14px;
+}
+
+.section-title {
+  font-size: 15px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+/* Ikon Settings Melayang */
+.settings-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #666;
+  cursor: pointer;
+  transition: transform 0.2s;
+  padding: 5px;
+}
+
+.settings-icon:hover {
+  transform: rotate(45deg);
+  background: none;
+}
+
+/* Layout 2 Kolom */
+.layout-grid {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.left-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Input Area */
+textarea {
+  width: 100%;
+  flex: 1; /* Memenuhi tinggi kolom kiri */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  resize: none;
+  line-height: 1.5;
+}
+
+textarea:focus {
+  border-color: #a00010;
+}
+
+/* Tombol (Buttons) */
+button {
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.btn-primary {
+  background-color: #a00010;
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #800008;
+}
+
+.btn-secondary {
+  background-color: #ccc;
+  color: #444;
+}
+
+.btn-group {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-group button {
+  flex: 1;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Tabel Hasil */
+.result-section {
+  display: none; 
+  margin-top: 15px;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.result-table th, .result-table td {
+  border: 1px solid #eee;
+  padding: 12px 10px;
+  text-align: left;
+}
+
+.result-table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+/* Warna Status */
+.text-paid { color: #2e7d32; font-weight: bold; }
+.text-unpaid { color: #e65100; font-weight: bold; }
+.text-error { color: #c62828; font-weight: bold; }
+.text-loading { color: #1565c0; font-style: italic; }
+
+/* Modal Pengaturan */
+.modal {
+  display: none;
+  position: fixed; 
+  z-index: 1000; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+}
+
+.modal-content {
+  background-color: #ffffff;
+  margin: 15% auto; 
+  padding: 25px;
+  border-radius: 12px;
+  width: 85%;
+  max-width: 380px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

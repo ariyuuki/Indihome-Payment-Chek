@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <title>IndiHome Payment Check</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Tombol Settings di Pojok Kanan Atas -->
+    <button id="settings-btn" class="settings-icon">⚙️</button>
+
+    <header>
+      <h1>Cek Tagihan IndiHome</h1>
+      <p>Masukkan nomor pelanggan Anda untuk mengecek status pembayaran</p>
+    </header>
+
+    <main>
+      <!-- Layout 2 Kolom (Input vs Tombol) -->
+      <div class="layout-grid">
+        
+        <!-- Kolom Kiri: Input Area -->
+        <div class="left-panel">
+          <h3 class="section-title">Daftar Nomor Internet</h3>
+          <textarea id="customer-ids" rows="6" placeholder="Masukkan nomor pelanggan di sini&#10;Gunakan baris baru (Enter)&#10;Contoh:&#10;162604206671&#10;161604204371" autocomplete="off"></textarea>
+        </div>
+
+        <!-- Kolom Kanan: Tombol Kendali -->
+        <div class="right-panel">
+          
+          <!-- Tombol Mulai dan Lanjutan disejajarkan -->
+          <div class="btn-group">
+            <button id="search-btn" class="btn-primary">▶️ Mulai Cek</button>
+            <button id="cek-lanjutan-btn" class="btn-primary" style="background-color: #0288d1;">🔄 Lanjutan</button>
+          </div>
+          
+          <div class="btn-group">
+            <button id="pause-btn" class="btn-secondary" disabled>⏸️ Pause</button>
+            <button id="stop-btn" class="btn-secondary" disabled>⏹️ Stop</button>
+          </div>
+          
+          <button id="export-btn" class="btn-primary" disabled>⬇️ Export (.csv)</button>
+        </div>
+
+      </div>
+
+      <!-- Tabel Live Progress & Hasil -->
+      <div id="result-container" class="result-section">
+        <h3 class="section-title">Hasil Pengecekan</h3>
+        <table class="result-table">
+          <thead>
+            <tr>
+              <th>No Inet</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="result-tbody">
+            <!-- Baris data dari JavaScript akan masuk ke sini -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Modal Pengaturan -->
+  <div id="settings-modal" class="modal">
+    <div class="modal-content">
+      <h3 style="margin-bottom: 15px; border-bottom: 2px solid #a00010; display: inline-block;">⚙️ Pengaturan Keamanan</h3>
+      
+      <div style="margin-bottom: 15px; margin-top: 10px;">
+        <label for="delay-setting" style="font-weight: bold; display: block; margin-bottom: 5px;">
+          Jeda Antar Nomor: <span id="delay-val" style="color: #a00010;">4</span> detik
+        </label>
+        <input type="range" id="delay-setting" min="2" max="20" value="4" style="width: 100%; cursor: pointer;">
+        <small style="color: #666;">Semakin lama jeda, semakin aman dari blokir IP.</small>
+      </div>
+      
+      <div style="margin-bottom: 20px;">
+        <label for="timeout-setting" style="font-weight: bold; display: block; margin-bottom: 5px;">
+          Batas Tunggu (Timeout):
+        </label>
+        <input type="number" id="timeout-setting" min="10" max="60" value="15" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+      </div>
+      
+      <div class="btn-group">
+        <button id="save-settings-btn" style="background-color: #2e7d32; color: white;">Simpan</button>
+        <button id="close-settings-btn" class="btn-secondary">Batal</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
